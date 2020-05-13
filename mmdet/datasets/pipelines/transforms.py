@@ -739,7 +739,7 @@ class Albu(object):
         self.bbox_params = (
             self.albu_builder(bbox_params) if bbox_params else None)
         self.aug = Compose([self.albu_builder(t) for t in self.transforms],
-                           bbox_params=self.bbox_params)
+                           bbox_params=self.bbox_params, p=1.0)
 
         if not keymap:
             self.keymap_to_albu = {

@@ -1,3 +1,4 @@
+#pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r projects/requirements.txt
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements/build.txt
-pip install "git+https://github.com/cocodataset/cocoapi.git#subdirectory=PythonAPI"
-pip install -v -e .
+#pip install "git+https://github.com/cocodataset/cocoapi.git#subdirectory=PythonAPI"
+#pip install -v -e .

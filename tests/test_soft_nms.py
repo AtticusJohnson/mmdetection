@@ -39,3 +39,4 @@ def test_soft_nms_device_and_dtypes_cpu():
     new_dets, inds = soft_nms(dets, iou_thr)
     assert dets.dtype == new_dets.dtype
     assert len(inds) == len(new_dets) == 4
+    print("cur test passed!")

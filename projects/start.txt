@@ -1,0 +1,1 @@
+bash ./tools/dist_train.sh ./projects/cascade101_dconv.py 4
