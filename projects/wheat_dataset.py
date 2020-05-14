@@ -32,7 +32,7 @@ class WheatDataset():
         # print(images_names.shape)
         dropped_image_names = images_names.drop_duplicates()  # num_images * 1
         images_sizes = df[['height', 'width']].values  # N * 2
-        boxes_ids = 0  # all the positive label: only one kind of label;
+        boxes_ids = 1  # all the positive label: only one kind of label;
                        # ???In coco: 0 is also as a real class, not background???.
 
         num_samples = len(boxes)
@@ -58,7 +58,7 @@ class WheatDataset():
                           'id': b_id + 1}
             annotations.append(annotation)
 
-        categories.append({'id': 0, 'name': 'wheat'})
+        categories.append({'id': 1, 'name': 'wheat'})
 
         print("dump size:", len(images), len(annotations), len(categories))
         return {'images': images, 'annotations': annotations, 'categories': categories}
@@ -118,12 +118,36 @@ class WheatDataset():
         global_std = np.asarray(stds).mean(axis=0).tolist()
         return global_mean, global_std
 
+    def generate_anno_for_test_images(self):
+        annotations = []
+        categories = [{'id': 1, 'name': 'wheat'}]
+        images = []
+        path = self.rootpath_data + "/test/"
+        # with open(path, 'r')
+        list_images = os.listdir(path)
+        # print(list_images)
+        i_id = 0
+        for image_name in list_images:
+            shape = cv2.imread(path + image_name, 0).shape
+            image = {'file_name': image_name,
+                     'height': shape[0],
+                     'width': shape[1],
+                     'id': i_id + 1
+                     }
+            i_id += 1
+            images.append(image)
+
+        with open(f"{self.rootpath_data}/test.json", "w") as json_file:
+            json.dump({'images': images, 'annotations': annotations, 'categories': categories}, json_file)
+
+        print("Generate test.json completely!!!")
 if __name__ == '__main__':
-    wheat_dataset = WheatDataset('/root/atticus/wheat')
+    wheat_dataset = WheatDataset('D:\dataset\wheat')
     # mean, std = wheat_dataset.get_normalized_cfgs()
     # print(mean, std)
     # >>> [80.2324447631836, 80.93988037109375, 54.676353454589844]
     # >>> [53.057960510253906, 53.754241943359375, 45.067726135253906]
 
-    data = wheat_dataset.load_dataset()
-    wheat_dataset.convert_dataset(*data)
+    # data = wheat_dataset.load_dataset()
+    # wheat_dataset.convert_dataset(*data)
+    wheat_dataset.generate_anno_for_test_images()

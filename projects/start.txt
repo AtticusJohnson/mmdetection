@@ -1,3 +1,12 @@
 bash ./tools/dist_train.sh ./projects/cascade101_dconv.py 4
 
 python demo/image_demo.py D:/dataset/wheat/test/2fd875eaa.jpg projects/cascade101_dconv.py G:/wheat_20200513/cascade101_dconv/epoch_20.pth --device cpu --score-thr 0.5
+
+python tools/infer.py ./projects/cascade101_dconv.py \
+     /var/www/nextcloud/data/dbc2017/files/work_dirs/cascade101_dconv/epoch_20.pth \
+     --json_out /var/www/nextcloud/data/dbc2017/files/work_dirs/cascade101_dconv/results_e20.json \
+     --show
+
+python ./tools/test.py projects/cascade101_dconv.py \
+     /var/www/nextcloud/data/dbc2017/files/work_dirs/cascade101_dconv/epoch_20.pth \
+     --show-dir "./projects/results"

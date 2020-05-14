@@ -5,6 +5,13 @@ ${python_env_path}\Lib\site-packages\mmcv\runner\hooks\lr_updater.py
 If you want to learn relevant cfgs for details, check these.**
 
 ### My supplements
+1. Add coco_utils.py \
+Into "mmdet/core/evaluation/coco_utils.py" \
+Reference from mmdetection_1.0rc
+
+2. Add infer.py \
+Into "tools/" \
+It is used to make inference for your images.
 
 ### My modification
 1. mmdet/datasets/coco.py \

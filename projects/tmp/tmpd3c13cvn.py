@@ -45,7 +45,7 @@ model = dict(
 classes = ('wheat', )  # only 1 class
 dataset_type = 'CocoDataset'
 use_spec_eval_index = "wheat_eval"  # add specific eval index if necessary.  # add specific eval index if necessary.
-data_root = 'D:\dataset\wheat/'
+data_root = '../wheat/'
 img_norm_cfg = dict(mean=[80.232, 80.940, 54.676], std=[53.058, 53.754, 45.068], to_rgb=True)
 
 # OneOf = [dict(type='RandomContrast'),
@@ -149,5 +149,4 @@ work_dir = '/var/www/nextcloud/data/dbc2017/files/work_dirs/cascade101_dconv'
 load_from = ""
 # https://s3.ap-northeast-2.amazonaws.com/open-mmlab/mmdetection/models/cascade_rcnn_x101_64x4d_fpn_2x_20181218-5add321e.pth
 resume_from = None
-# workflow = [('train', 1), ('val', 1)]
-workflow = [('test', 1)]
+workflow = [('train', 1), ('val', 1)]

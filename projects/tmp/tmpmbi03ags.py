@@ -149,5 +149,4 @@ work_dir = '/var/www/nextcloud/data/dbc2017/files/work_dirs/cascade101_dconv'
 load_from = ""
 # https://s3.ap-northeast-2.amazonaws.com/open-mmlab/mmdetection/models/cascade_rcnn_x101_64x4d_fpn_2x_20181218-5add321e.pth
 resume_from = None
-# workflow = [('train', 1), ('val', 1)]
-workflow = [('test', 1)]
+workflow = [('train', 1), ('val', 1)]
