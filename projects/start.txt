@@ -1,1 +1,3 @@
 bash ./tools/dist_train.sh ./projects/cascade101_dconv.py 4
+
+python demo/image_demo.py D:/dataset/wheat/test/2fd875eaa.jpg projects/cascade101_dconv.py G:/wheat_20200513/cascade101_dconv/epoch_20.pth --device cpu --score-thr 0.5
